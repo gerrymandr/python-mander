@@ -3,7 +3,7 @@ import utils
 
 class District(object):
 
-    def __init__(self, pathToGeojsonOrShapefile, epsg='2163', **kwargs):
+    def __init__(self, pathToGeojsonOrShapefile, epsg='2163'):
         self.epsg = epsg
         self.gdf = gpd.read_file(pathToGeojsonOrShapefile)
         if not self.gdf.crs:

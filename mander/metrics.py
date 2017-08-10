@@ -9,7 +9,8 @@ def calculatePolsby(district):
 
 
 def calculateConvexHull(district):
-    chScore = district.area / district.gdf.convex_hull.area
+    chArea = utils.getConvexHullArea(district)
+    chScore = district.area / chArea
     return chScore
 
 

@@ -11,6 +11,11 @@ def getMinBoundingCircleArea(district):
     return area
 
 
+def getConvexHullArea(district):
+    area = district.gdf.convex_hull.area
+    return area
+
+
 def getCoordPairs(gdf):
 
     coordPairs = []
