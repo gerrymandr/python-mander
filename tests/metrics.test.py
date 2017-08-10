@@ -8,8 +8,12 @@ from mander.metrics import calculatePolsby
 
 test_districts = ['CD_CA_24', 'CD_CA_9', 'CD_IL_4', 'CD_MA_9', 'CD_PA_7']
 
-test_expected = []
-test_results = []
+metrics = {
+    'polsbypopper': []
+}
+
+test_expected = metrics.copy()
+test_results = metrics.copy()
 
 for d in test_districts:
 
@@ -21,11 +25,12 @@ for d in test_districts:
 
       district = District(district_boundary)
 
-      test_expected.append(district_scores['polsbypopper'])
-      test_results.append(calculatePolsby(district))
+      # Polsby Popper
+      test_expected['polsbypopper'].append(district_scores['polsbypopper'])
+      test_results['polsbypopper'].append(calculatePolsby(district))
 
 
 class TestMetrics(unittest.TestCase):
 
-    def test_values(self):
-      self.assertEqual(test_expected, test_results)
+    def test_polsbypopper(self):
+      self.assertEqual(test_expected['polsbypopper'], test_results['polsbypopper'])
