@@ -1,9 +1,9 @@
 import geopandas as gpd
+import utils
 
+class District(object):
 
-class district(object):
-
-    def __init__(self, pathToGeojsonOrShapefile, epsg='2163'):
+    def __init__(self, pathToGeojsonOrShapefile, epsg='2163', **kwargs):
         self.epsg = epsg
         self.gdf = gpd.read_file(pathToGeojsonOrShapefile)
         if not self.gdf.crs:
@@ -11,5 +11,4 @@ class district(object):
         self.gdf = self.gdf.to_crs(epsg=self.epsg)
         self.area = self.gdf.area.values[0]
         self.perimeter = self.gdf.length.values[0]
-        self.x, self.y = self.gdf.geometry[0].exterior.coords.xy
-        self.coordPairs = zip(self.x, self.y)
+        self.coordPairs = utils.getCoordPairs(self.gdf)
