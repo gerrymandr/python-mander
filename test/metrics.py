@@ -1,5 +1,6 @@
 from os import path, getcwd
 import json
+import copy
 
 from unittest import TestCase
 
@@ -15,8 +16,8 @@ metrics = {
     'polsbypopper': []
 }
 
-test_expected = metrics.copy()
-test_results = metrics.copy()
+test_expected = copy.deepcopy(metrics)
+test_results = copy.deepcopy(metrics)
 
 for d in test_districts:
 
@@ -29,11 +30,11 @@ for d in test_districts:
       district_boundary = json.load(district_boundary_data)
       district_scores = json.load(district_scores_data)
 
-      district = district(district_boundary)
+      test_district = district(district_boundaries_file) # TODO use python object instead of file path parameter
 
       # Polsby Popper
       test_expected['polsbypopper'].append(district_scores['polsbypopper'])
-      test_results['polsbypopper'].append(calculatePolsby(district))
+      test_results['polsbypopper'].append(calculatePolsby(test_district))
 
 print(test_expected)
 print(test_results)
