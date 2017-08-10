@@ -50,4 +50,4 @@ Finally, generate the Schwartzberg score using the following ratio:
 
 ![](https://github.com/cicero-data/compactness-stats/raw/master/img/schwartzberg-formula-3.png?raw=true)
 
-where P is the perimeter of the district and C is the circumference (perimeter) of the circle with the same area. In this case, we have taken the inverse of the number so that it falls on a scale of 0 to 100.
+where P is the perimeter of the district and C is the circumference (perimeter) of the circle with the same area.
