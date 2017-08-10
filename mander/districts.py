@@ -11,3 +11,5 @@ class district(object):
         self.gdf = self.gdf.to_crs(epsg=self.epsg)
         self.area = self.gdf.area.values[0]
         self.perimeter = self.gdf.length.values[0]
+        self.x, self.y = self.gdf.geometry[0].exterior.coords.xy
+        self.coordPairs = zip(self.x, self.y)
