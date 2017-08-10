@@ -32,3 +32,22 @@ where A is the area of the district.
 The Reock score is a measure of the ratio of the district to the area of the minimum bounding circle that encloses the district's geometry.  
 ![](https://github.com/cicero-data/compactness-stats/raw/master/img/reock-formula.png)  
 where A is the area of the district.
+
+## Schwartzberg
+The Schwartzberg score is a ratio of the perimeter of the district to the circumference of a circle whose area is equal to the area of the district.
+
+To generate the Schwartzberg score, first the circumference of a circle with an equal area of the district must be calculated. To do so, use the formula:
+
+![](https://github.com/cicero-data/compactness-stats/raw/master/img/schwartzberg-formula-1.png)
+
+Formula to generate circumference of a circle
+
+where A is the area of the district and r is the radius. With the radius calculated, use the following formula to generate the circumference (perimeter):
+
+![](https://github.com/cicero-data/compactness-stats/raw/master/img/schwartzberg-formula-2.png)
+
+Finally, generate the Schwartzberg score using the following ratio:
+
+![](https://github.com/cicero-data/compactness-stats/raw/master/img/schwartzberg-formula-3.png?raw=true)
+
+where P is the perimeter of the district and C is the circumference (perimeter) of the circle with the same area. In this case, we have taken the inverse of the number so that it falls on a scale of 0 to 100.
