@@ -33,11 +33,11 @@ for d in test_districts:
       test_district = district(district_boundaries_file) # TODO use python object instead of file path parameter
 
       # Polsby Popper
-      test_expected['polsbypopper'].append(district_scores['polsbypopper'])
-      test_results['polsbypopper'].append(calculatePolsby(test_district))
+      test_expected['polsbypopper'].append('%.4f' % district_scores['polsbypopper'])
+      test_results['polsbypopper'].append('%.4f' % calculatePolsby(test_district))
 
-print(test_expected)
-print(test_results)
+print('Expected: ', test_expected)
+print('Results: ', test_results)
 
 class TestMetrics(TestCase):
 
