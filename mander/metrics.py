@@ -12,5 +12,5 @@ def calculateConvexHull(district):
 
 def calculateReock(district):
     mbcArea = utils.getMinBoundingCircleArea(district)
-    reockScore = district.area /mbcArea
+    reockScore = district.area / mbcArea
     return reockScore
