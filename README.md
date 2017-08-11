@@ -13,6 +13,8 @@ district = District('CD_CA_9.geojson')
 # Call a metrics function on the District class object
 score = calculatePolsbyPopper(district)
 ```
+## Assumptions
+The package will accept any projection, but all districts are converted to [US National Atlas Equal Area](http://spatialreference.org/ref/epsg/2163/). Equal area projections are best for calculating compactness metrics. This ensures that when calculating area and perimeter measures, each district has a minimal amount of distortion, so districts in different parts of the country can be accurately compared to one another. Therefore, this shouldn't be used for districts outside of the U.S. Future versions will accept local projections.
 
 ## Compactness Metrics
 
