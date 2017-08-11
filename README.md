@@ -3,7 +3,7 @@ Python package for calculating metrics related to district shapes.
 
 # Installation
 
-Requires [GDAL](http://www.gdal.org/) (brew install gdal).
+Requires [GDAL](http://www.gdal.org/) (`brew install gdal` on Mac OS X with Homebrew).
 
 Then:
 ```
