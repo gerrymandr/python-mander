@@ -27,7 +27,7 @@ def calculateSchwartzberg(District):
     return score
 
 
-def scoresToGeojson(District, metricName):
+def scoresToGeojson(District, metricName, path_out=None):
     if metricName == 'polsby':
         District.gdf['polsby'] = calculatePolsbyPopper(District)
     elif metricName == 'schwarzberg':
@@ -36,4 +36,9 @@ def scoresToGeojson(District, metricName):
         District.gdf['convex_hull'] = calculateConvexHull(District)
     elif metricName == 'reock':
         District.gdf['reock'] = calculateReock(District)
-    return District.gdf.to_json()
+    jsonDistrict = District.gdf.to_json()
+    if path_out:
+        with open(path_out, 'wb') as f:
+            f.write(jsonDistrict)
+    else:
+        return District.gdf.to_json()
