@@ -6,12 +6,12 @@ from unittest import TestCase
 
 #import geopandas
 from mander.districts import District
-from mander.metrics import calculatePolsby, calculateConvexHull, calculateReock, calculateSchwartzberg
+from mander.metrics import calculatePolsbyPopper, calculateConvexHull, calculateReock, calculateSchwartzberg
 
 base_dir = path.dirname(path.realpath(__file__))
 
 metricFunctions = {
-  'polsbypopper': calculatePolsby,
+  'polsbypopper': calculatePolsbyPopper,
   'convexhull': calculateConvexHull,
   'reock': calculateReock,
   'schwartzberg': calculateSchwartzberg
