@@ -18,7 +18,6 @@ class District(object):
         else:
             raise KeyError("No path or JSON object supplied.")
         self.epsg = outCrs.split(':')[1]
-        self.gdf = gpd.read_file(pathToGeojsonOrShapefile)
         self.gdf.crs = {'init': inCrs}
         self.gdf = self.gdf.to_crs(epsg=self.epsg)
         self.area = self.gdf.area.values[0]
