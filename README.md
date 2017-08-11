@@ -54,7 +54,7 @@ where P is the perimeter of the district and C is the circumference (perimeter) 
 
 # Testing
 
-To run the metrics test case:
+To run the [metrics](test/metrics.py) test case:
 
 ```
 python -m unittest test.metrics
