@@ -1,14 +1,17 @@
 # mander
 Python package for calculating metrics related to district shapes.
 
-# Example
+# Usage
 
 ```python
-from mander import District
+from mander.districts import District
+from mader.metrics import calculatePolsbyPopper
 
-district = District(geojson_polygon)
+# Load a district from a GeoJSON or SHP file path
+district = District('CD_CA_9.geojson')
 
-pp_score = district.calculatePolsbyPopper()
+# Call a metrics function on the District class object
+score = calculatePolsbyPopper(district)
 ```
 
 # Compactness Metrics
