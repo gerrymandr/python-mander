@@ -5,7 +5,7 @@ Python package for calculating metrics related to district shapes.
 
 ```python
 from mander.districts import District
-from mader.metrics import calculatePolsbyPopper
+from mander.metrics import calculatePolsbyPopper
 
 # Load a district from a GeoJSON or SHP file path
 district = District('CD_CA_9.geojson')
