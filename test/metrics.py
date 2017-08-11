@@ -5,12 +5,12 @@ import copy
 from unittest import TestCase
 
 #import geopandas
-from mander.districts import district
+from mander.districts import District
 from mander.metrics import calculatePolsby, calculateConvexHull, calculateReock, calculateSchwartzberg
 
 base_dir = path.dirname(path.realpath(__file__))
 
-test_districts = ['CD_CA_9', 'CD_IL_4', 'CD_PA_7'] # TODO also test 'CD_CA_24', 'CD_MA_9'
+test_districts = ['CD_CA_9', 'CD_IL_4', 'CD_PA_7', 'CD_CA_24', 'CD_MA_9']
 
 metrics = {
     'polsbypopper': [],
@@ -33,7 +33,7 @@ for d in test_districts:
       district_boundary = json.load(district_boundary_data)
       district_scores = json.load(district_scores_data)
 
-      test_district = district(district_boundaries_file) # TODO use python object instead of file path parameter
+      test_district = District(district_boundaries_file) # TODO use python object instead of file path parameter
 
       # Polsby Popper
       test_expected['polsbypopper'].append('%.4f' % district_scores['polsbypopper'])
