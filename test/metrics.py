@@ -41,7 +41,7 @@ for d in test_districts:
       district_boundary = json.load(district_boundary_data)
       district_scores = json.load(district_scores_data)
 
-      test_district = District(district_boundaries_file) # TODO use python object instead of file path parameter
+      test_district = District(path=district_boundaries_file) # TODO use python object instead of file path parameter
 
       # Collect expected and returned values
       for m in metricFunctions:
