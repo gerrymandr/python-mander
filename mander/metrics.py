@@ -28,14 +28,19 @@ def calculateSchwartzberg(District):
 
 
 def scoresToGeojson(District, metricName, path_out=None):
-    if metricName == 'polsbypopper':
-        District.gdf['polsbypopper'] = calculatePolsbyPopper(District)
+    if metricName == 'polsby_popper':
+        District.gdf['polsby_popper'] = calculatePolsbyPopper(District)
     elif metricName == 'schwarzberg':
         District.gdf['schwarzberg'] = calculateSchwartzberg(District)
     elif metricName == 'convex_hull':
         District.gdf['convex_hull'] = calculateConvexHull(District)
     elif metricName == 'reock':
         District.gdf['reock'] = calculateReock(District)
+    else:
+        raise Warning(
+            'Plese specify a legitimate metric name!'
+            'Here are some good examples: {0}'.format(str(District.metrics))
+        )
     District.gdf = District.gdf.to_crs({'init': District.inCrs})
     jsonDistrict = District.gdf.to_json()
     if path_out:

@@ -24,3 +24,4 @@ class District(object):
         self.area = self.gdf.area
         self.perimeter = self.gdf.length
         self.coordPairs = utils.getCoordPairs(self.gdf)
+        self.metrics = ['polsby_popper', 'schwarzberg', 'convex_hull', 'reock']
