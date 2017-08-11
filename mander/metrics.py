@@ -28,8 +28,8 @@ def calculateSchwartzberg(District):
 
 
 def scoresToGeojson(District, metricName, path_out=None):
-    if metricName == 'polsby_popper':
-        District.gdf['polsby_popper'] = calculatePolsbyPopper(District)
+    if metricName == 'polsbypopper':
+        District.gdf['polsbypopper'] = calculatePolsbyPopper(District)
     elif metricName == 'schwarzberg':
         District.gdf['schwarzberg'] = calculateSchwartzberg(District)
     elif metricName == 'convex_hull':
