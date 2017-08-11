@@ -7,9 +7,7 @@ Requires [GDAL](http://www.gdal.org/) (`brew install gdal` on Mac OS X with Home
 
 Then:
 ```
-git clone https://github.com/gerrymandr/python-mander.git
-cd python-mander
-pip install -r requirements.txt
+pip install mander
 ```
 
 # Usage
