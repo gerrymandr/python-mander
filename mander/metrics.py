@@ -3,37 +3,37 @@ import utils
 import numpy as np
 
 
-def calculatePolsbyPopper(districtObject):
-    ppScore = 4 * math.pi * districtObject.area / districtObject.perimeter**2
+def calculatePolsbyPopper(District):
+    ppScore = 4 * math.pi * District.area / District.perimeter**2
     return ppScore
 
 
-def calculateConvexHull(districtObject):
-    chArea = utils.getConvexHullArea(districtObject)
-    chScore = districtObject.area / chArea
+def calculateConvexHull(District):
+    chArea = utils.getConvexHullArea(District)
+    chScore = District.area / chArea
     return chScore
 
 
-def calculateReock(districtObject):
-    mbcAreas = utils.getMinBoundingCircleAreas(districtObject)
-    reockScore = districtObject.area / mbcAreas
+def calculateReock(District):
+    mbcAreas = utils.getMinBoundingCircleAreas(District)
+    reockScore = District.area / mbcAreas
     return reockScore
 
 
-def calculateSchwartzberg(districtObject):
-    r = np.sqrt((districtObject.area) / math.pi)
+def calculateSchwartzberg(District):
+    r = np.sqrt((District.area) / math.pi)
     c = 2 * math.pi * r
-    score = 1 / (districtObject.perimeter / c)
+    score = 1 / (District.perimeter / c)
     return score
 
 
-def getDelegationScores(Delegation, metricName):
+def scoresToGeojson(District, metricName):
     if metricName == 'polsby':
-        Delegation.gdf['polsby'] = calculatePolsbyPopper(Delegation)
+        District.gdf['polsby'] = calculatePolsbyPopper(District)
     elif metricName == 'schwarzberg':
-        Delegation.gdf['schwarzberg'] = calculateSchwartzberg(Delegation)
+        District.gdf['schwarzberg'] = calculateSchwartzberg(District)
     elif metricName == 'convex_hull':
-        Delegation.gdf['convex_hull'] = calculateConvexHull(Delegation)
+        District.gdf['convex_hull'] = calculateConvexHull(District)
     elif metricName == 'reock':
-        Delegation.gdf['reock'] = calculateReock(Delegation)
-    return Delegation
+        District.gdf['reock'] = calculateReock(District)
+    return District.to_json()
