@@ -73,6 +73,21 @@ Finally, generate the Schwartzberg score using the following ratio:
 
 where P is the perimeter of the district and C is the circumference (perimeter) of the circle with the same area.
 
+## Add Compactness Scores to GeoJSON
+
+### `metrics.scoresToGeojson(District, metricName, path_out=None)`
+
+Add compactness scores as a property on GeoJSON features.
+
+`metricName` should be one of:
+
+- `'polsbypopper'`
+- `'schwarzberg'`
+- `'convex_hull'`
+- `'reock'`
+
+Return JSON object. Optionally, write to a GeoJSon file with `path_out`.
+
 # Testing
 
 To run the [metrics](test/metrics.py) test case:
