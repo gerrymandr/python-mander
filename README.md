@@ -19,7 +19,7 @@ from mander.districts import District
 from mander.metrics import calculatePolsbyPopper
 
 # Load a district from a GeoJSON or SHP file path
-district = District('CD_CA_9.geojson')
+district = District(path='CD_CA_9.geojson')
 
 # Call a metrics function on the District class object
 score = calculatePolsbyPopper(district)
