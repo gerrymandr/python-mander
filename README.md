@@ -1,6 +1,17 @@
 # mander
 Python package for calculating metrics related to district shapes.
 
+# Installation
+
+Requires [GDAL](http://www.gdal.org/) (brew install gdal).
+
+Then:
+```
+git clone https://github.com/gerrymandr/python-mander.git
+cd python-mander
+pip install -r requirements.txt
+```
+
 # Usage
 
 ```python
