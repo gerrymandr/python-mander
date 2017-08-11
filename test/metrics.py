@@ -4,7 +4,6 @@ import copy
 
 from unittest import TestCase
 
-#import geopandas
 from mander.districts import District
 from mander.metrics import calculatePolsbyPopper, calculateConvexHull, calculateReock, calculateSchwartzberg
 
