@@ -6,8 +6,11 @@ from unittest import TestCase
 
 from mander.districts import District
 from mander.metrics import calculatePolsbyPopper, calculateConvexHull, calculateReock, calculateSchwartzberg
+from mander.metrics import scoresToGeojson
 
 base_dir = path.dirname(path.realpath(__file__))
+
+# Test individual metrics
 
 metricFunctions = {
   'polsbypopper': calculatePolsbyPopper,
@@ -60,3 +63,20 @@ class TestMetrics(TestCase):
 
     def test_schwartzberg(self):
       self.assertEqual(test_expected['schwartzberg'], test_returned['schwartzberg'])
+
+
+# Test scoresToGeojson
+
+scores_data = scoresToGeojson(District(path=path.join(base_dir, 'data', 'MN_Senate_2017.geojson')), 'polsbypopper')
+scores = json.loads(scores_data)
+
+contains_score = 0
+for feature in scores['features']:
+    if isinstance(feature['properties']['polsbypopper'], float):
+        contains_score = contains_score + 1
+
+class TestScoreGeojson(TestCase):
+
+    def test_alldistrictsscored(self):
+
+        self.assertEqual(contains_score, 67)
