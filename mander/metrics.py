@@ -3,25 +3,37 @@ import utils
 import numpy as np
 
 
-def calculatePolsby(district):
-    ppScore = 4 * math.pi * district.area / district.perimeter**2
+def calculatePolsby(districtObject):
+    ppScore = 4 * math.pi * districtObject.area / districtObject.perimeter**2
     return ppScore
 
 
-def calculateConvexHull(district):
-    chArea = utils.getConvexHullArea(district)
-    chScore = district.area / chArea
+def calculateConvexHull(districtObject):
+    chArea = utils.getConvexHullArea(districtObject)
+    chScore = districtObject.area / chArea
     return chScore
 
 
-def calculateReock(district):
-    mbcArea = utils.getMinBoundingCircleArea(district)
-    reockScore = district.area / mbcArea
+def calculateReock(districtObject):
+    mbcAreas = utils.getMinBoundingCircleAreas(districtObject)
+    reockScore = districtObject.area / mbcAreas
     return reockScore
 
 
-def calculateSchwartzberg(district):
-    r = np.sqrt((district.area) / math.pi)
+def calculateSchwartzberg(districtObject):
+    r = np.sqrt((districtObject.area) / math.pi)
     c = 2 * math.pi * r
-    score = 1 / (district.perimeter / c)
+    score = 1 / (districtObject.perimeter / c)
     return score
+
+
+def getDelegationScores(Delegation, metricName):
+    if metricName == 'polsby':
+        Delegation.gdf['polsby'] = calculatePolsby(Delegation.gdf)
+    elif metricName == 'schwarzberg':
+        Delegation.gdf['schwarzberg'] = calculateSchwartzberg(Delegation.gdf)
+    elif metricName == 'convex_hull':
+        Delegation.gdf['convex_hull'] = calculateConvexHull(Delegation)
+    elif metricName == 'reock':
+        Delegation.gdf['reock'] = calculateReock(Delegation)
+    return Delegation
