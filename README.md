@@ -45,12 +45,16 @@ With convex hull polygons generated, the ratio can be calculated using the formu
 ![convexhull formula](https://github.com/cicero-data/compactness-stats/raw/master/img/convexhull-formula.png)  
 where A is the area of the district.
 
+Note: this does not compute the calculation on each multipolygon feature in the case of districts containing islands. See [issue #9](https://github.com/gerrymandr/python-mander/issues/9).
+
 ---
 
 ### `metrics.calculateReock`
 The Reock score is a measure of the ratio of the district to the area of the minimum bounding circle that encloses the district's geometry.  
 ![reock formula](https://github.com/cicero-data/compactness-stats/raw/master/img/reock-formula.png)  
 where A is the area of the district.
+
+Note: this does not compute the calculation on each multipolygon feature in the case of districts containing islands. See [issue #10](https://github.com/gerrymandr/python-mander/issues/10).
 
 ---
 
