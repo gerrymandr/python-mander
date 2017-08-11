@@ -1,4 +1,4 @@
 [submodule "compactnesslib"]
-	path = compactnesslib
+	path = src/compactnesslib
 	url = https://github.com/r-barnes/compactnesslib.git
 	branch = master
