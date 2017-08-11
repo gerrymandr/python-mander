@@ -3,7 +3,7 @@ import utils
 import numpy as np
 
 
-def calculatePolsby(districtObject):
+def calculatePolsbyPopper(districtObject):
     ppScore = 4 * math.pi * districtObject.area / districtObject.perimeter**2
     return ppScore
 

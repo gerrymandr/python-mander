@@ -6,12 +6,12 @@ from unittest import TestCase
 
 #import geopandas
 from mander.districts import District
-from mander.metrics import calculatePolsby, calculateConvexHull, calculateReock, calculateSchwartzberg
+from mander.metrics import calculatePolsbyPopper, calculateConvexHull, calculateReock, calculateSchwartzberg
 
 base_dir = path.dirname(path.realpath(__file__))
 
 metricFunctions = {
-  'polsbypopper': calculatePolsby,
+  'polsbypopper': calculatePolsbyPopper,
   'convexhull': calculateConvexHull,
   'reock': calculateReock,
   'schwartzberg': calculateSchwartzberg
@@ -41,7 +41,7 @@ for d in test_districts:
       district_boundary = json.load(district_boundary_data)
       district_scores = json.load(district_scores_data)
 
-      test_district = District(district_boundaries_file) # TODO use python object instead of file path parameter
+      test_district = District(path=district_boundaries_file) # TODO use python object instead of file path parameter
 
       # Collect expected and returned values
       for m in metricFunctions:
