@@ -29,7 +29,7 @@ def calculateSchwartzberg(districtObject):
 
 def getDelegationScores(Delegation, metricName):
     if metricName == 'polsby':
-        Delegation.gdf['polsby'] = calculatePolsby(Delegation)
+        Delegation.gdf['polsby'] = calculatePolsbyPopper(Delegation)
     elif metricName == 'schwarzberg':
         Delegation.gdf['schwarzberg'] = calculateSchwartzberg(Delegation)
     elif metricName == 'convex_hull':
