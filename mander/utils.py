@@ -1,6 +1,7 @@
 import minBoundingCircle as mbc
 import math
 import pandas as pd
+from shapely.geometry import Polygon, MultiPolygon
 
 
 def getMinBoundingCircleAreas(districtObject):
@@ -23,11 +24,11 @@ def getCoordPairs(gdf):
     allShapeCoords = []
     for i, row in gdf.iterrows():
         coordPairs = []
-        if gdf.geom_type[0] == 'Polygon':
+        if type(row['geometry']) == Polygon:
             x, y = gdf.geometry[0].exterior.coords.xy
             coordPairs = zip(x, y)
-        elif gdf.geom_type[0] == 'MultiPolygon':
-            for polygon in gdf.geometry[0]:
+        elif type(row['geometry']) == MultiPolygon:
+            for polygon in row.geometry:
                 x, y = polygon.exterior.coords.xy
                 coordPairs += zip(x, y)
         allShapeCoords += [coordPairs]
