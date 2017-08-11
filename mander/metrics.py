@@ -36,6 +36,7 @@ def scoresToGeojson(District, metricName, path_out=None):
         District.gdf['convex_hull'] = calculateConvexHull(District)
     elif metricName == 'reock':
         District.gdf['reock'] = calculateReock(District)
+    District.gdf = District.gdf.to_crs({'init': District.inCrs})
     jsonDistrict = District.gdf.to_json()
     if path_out:
         with open(path_out, 'wb') as f:

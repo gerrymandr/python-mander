@@ -5,7 +5,7 @@ import utils
 class District(object):
 
     def __init__(self, path=None, json=None, inCrs='epsg:4326',
-                 outCrs='epsg:2163'):
+                 metricCrs='epsg:2163'):
         """
         Instantiates a District object with either a path to GeoJSON/shapefile
         or an in-memory GeoJSON object. If both are specified the in-memory
@@ -17,9 +17,10 @@ class District(object):
             self.gdf = gpd.read_file(path)
         else:
             raise KeyError("No path or JSON object supplied.")
-        self.epsg = outCrs.split(':')[1]
+        self.inCrs = inCrs
+        self.metricCrs = metricCrs
         self.gdf.crs = {'init': inCrs}
-        self.gdf = self.gdf.to_crs(epsg=self.epsg)
+        self.gdf = self.gdf.to_crs({'init': metricCrs})
         self.area = self.gdf.area
         self.perimeter = self.gdf.length
         self.coordPairs = utils.getCoordPairs(self.gdf)
