@@ -15,8 +15,8 @@ std::string ProcessGeoJSON(const std::string &geojson, const std::string id){
 }
 
 
-PYBIND11_PLUGIN(compactnesslib) {
-  py::module m("compactnesslib", "Gerrymandering score calculator");
+PYBIND11_PLUGIN(_mander) {
+  py::module m("_mander", "Compactness calculator");
 
   m.def(
     "ProcessGeoJSON",
