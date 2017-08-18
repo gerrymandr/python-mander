@@ -4,23 +4,27 @@ import numpy as np
 
 
 def calculatePolsbyPopper(District):
+    """Polsby-Popper"""
     ppScore = 4 * math.pi * District.area / District.perimeter**2
     return ppScore
 
 
 def calculateConvexHull(District):
+    """Convex Hull"""
     chArea = utils.getConvexHullArea(District)
     chScore = District.area / chArea
     return chScore
 
 
 def calculateReock(District):
+    """Reock"""
     mbcAreas = utils.getMinBoundingCircleAreas(District)
     reockScore = District.area / mbcAreas
     return reockScore
 
 
 def calculateSchwartzberg(District):
+    """Schwartzberg"""
     r = np.sqrt((District.area) / math.pi)
     c = 2 * math.pi * r
     score = 1 / (District.perimeter / c)
