@@ -21,5 +21,6 @@ setuptools.setup(name='mander',
   author_email = '',
   license      = 'MIT',
   packages     = setuptools.find_packages(),
+  scripts      = ['bin/mander'],
   ext_modules  = ext_modules
 )

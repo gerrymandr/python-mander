@@ -36,11 +36,17 @@ PYBIND11_PLUGIN(_mander) {
   py::module m("_mander", "Internal library used by python-mander to calculate scores");
 
   m.def(
+    "getListOfScores",
+    &getListOfScores,
+    "Returns a list of compactness scores."
+  );
+
+  m.def(
     "getScoresForGeoJSON",
     &getScoresForGeoJSON,
     "Takes a GeoJSON string as input, calculates all scores, return a JSON dictionary of the scores keyed to values identified 'id' which are expected to be properties of the GeoJSON objects. If id='', then the object's 0-indexed order is used.",
     py::arg("geojson"),
-    py::arg("id")=""
+    py::arg("id")="",
     py::arg("score_list")=""
   );
 
