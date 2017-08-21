@@ -32,7 +32,10 @@ Augmenting an existing shapefile with compactness scores:
 Compactness Metrics
 ===================
 
-TODO: Describe metrics in a scalable way here
+Scores are calculated using the underlying
+[compactnesslib](https://github.com/r-barnes/compactnesslib)
+a list of the scores available and how they are calculated is available
+[here](https://github.com/r-barnes/compactnesslib/blob/master/Scores.md)
 
 
 
