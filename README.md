@@ -35,7 +35,7 @@ Compactness Metrics
 Scores are calculated using the underlying
 [compactnesslib](https://github.com/r-barnes/compactnesslib)
 a list of the scores available and how they are calculated is available
-[here](https://github.com/r-barnes/compactnesslib/blob/master/Scores.md)
+[here](https://github.com/r-barnes/compactnesslib/blob/master/Scores.md).
 
 
 
