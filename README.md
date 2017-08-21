@@ -1,53 +1,44 @@
-# mander
-Python package for calculating metrics related to district shapes.
+Mander
+======
 
-# Example
+A Python package and command line utility for calculating compactness metrics of
+electoral districts.
 
-```python
-from mander import District
 
-district = District(geojson_polygon)
 
-pp_score = district.calculatePolsbyPopper()
-```
+Example
+=======
 
-# Compactness Metrics
-This package can calculate compactness statistics for three commonly-used ratios to measure potential gerrymandering.
+What scores are available?
 
-## Polsby-Popper
-The Polsby-Popper measure is a ratio of the area of the district to the area of a circle whose circumference is equal to the perimeter of the district.
+    import mander
+    mander.getListOfScores()
 
-The formula for calculating the Polsby-Popper score is:  
-![](https://github.com/cicero-data/compactness-stats/raw/master/img/polsby-popper-formula.png)  
-where A is the area of the district and p is the perimeter of the district.
+Getting scores for GeoJSON:
 
-## Convex Hull
-The Area/Convex Hull score is a ratio of the area of the district to the area of the minimum convex polygon that can enclose the district's geometry.  
+    import mander
 
-With convex hull polygons generated, the ratio can be calculated using the formula:
-![](https://github.com/cicero-data/compactness-stats/raw/master/img/convexhull-formula.png)  
-where A is the area of the district.
+    geojson_data = """{ "type": "FeatureCollection", "features": [{"type": "Feature","properties": {},"geometry": { "type": "Polygon", "coordinates": [ [ [ -30.585937499999996, 27.68352808378776 ], [ -2.8125, 27.68352808378776 ], [ -2.8125, 46.800059446787316 ], [ -30.585937499999996, 46.800059446787316 ], [ -30.585937499999996, 27.68352808378776 ] ] ] } } ] }"""
 
-## Reock
-The Reock score is a measure of the ratio of the district to the area of the minimum bounding circle that encloses the district's geometry.  
-![](https://github.com/cicero-data/compactness-stats/raw/master/img/reock-formula.png)  
-where A is the area of the district.
+    mander.getScoresForGeoJSON(geojson_data)
 
-## Schwartzberg
-The Schwartzberg score is a ratio of the perimeter of the district to the circumference of a circle whose area is equal to the area of the district.
+Augmenting an existing shapefile with compactness scores:
 
-To generate the Schwartzberg score, first the circumference of a circle with an equal area of the district must be calculated. To do so, use the formula:
+    import mander
+    mander.augmentShapefileWithScores("us_electoral_districts.shp")
 
-![](https://github.com/cicero-data/compactness-stats/raw/master/img/schwartzberg-formula-1.png)
 
-Formula to generate circumference of a circle
 
-where A is the area of the district and r is the radius. With the radius calculated, use the following formula to generate the circumference (perimeter):
+Compactness Metrics
+===================
 
-![](https://github.com/cicero-data/compactness-stats/raw/master/img/schwartzberg-formula-2.png)
+TODO: Describe metrics in a scalable way here
 
-Finally, generate the Schwartzberg score using the following ratio:
 
-![](https://github.com/cicero-data/compactness-stats/raw/master/img/schwartzberg-formula-3.png?raw=true)
 
-where P is the perimeter of the district and C is the circumference (perimeter) of the circle with the same area.
+Credits
+=======
+
+This package was created for the
+[Metric Geometry And Gerrymandering Group](https://sites.tufts.edu/gerrymandr/)
+as part of a hack-a-thon on August 10-11, 2017.
