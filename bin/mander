@@ -5,7 +5,7 @@ import sys
 
 if len(sys.argv)!=2:
   print("""Adds compactness scores to a shapefile
-Syntax: {0} <Input File>"
+Syntax: {0} <Input File>
 
   <Input File>  - Filename of inputfile.
 """.format(sys.argv[0]))
