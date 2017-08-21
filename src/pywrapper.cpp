@@ -1,5 +1,7 @@
 #include <compactnesslib.hpp>
 #include <pybind11.h>
+#include <stl.h>
+#include <vector>
 
 namespace py = pybind11;
 
