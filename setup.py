@@ -5,7 +5,7 @@ import glob
 ext_modules = [
   setuptools.Extension(
     "_mander",
-    glob.glob('src/*.cpp') + glob.glob('lib/compactnesslib/*.cpp') + glob.glob('lib/compactnesslib/shapelib/*.c'),
+    glob.glob('src/*.cpp') + glob.glob('lib/compactnesslib/*.cpp') + glob.glob('lib/compactnesslib/shapelib/*.cpp'),
     include_dirs = ['lib/compactnesslib', 'lib/pybind11/'],
     language = 'c++',
     extra_compile_args = ['-std=c++11'],
