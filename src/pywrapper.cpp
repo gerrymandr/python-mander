@@ -39,6 +39,7 @@ std::string getBoundedScoresForGeoJSON(
   auto gc_sub = complib::ReadGeoJSON(gj_subunit);
   auto gc_sup = complib::ReadGeoJSON(gj_superunit);
   complib::CalculateListOfBoundedScores(gc_sub, gc_sup, join_on, score_list);
+  complib::CalculateListOfUnboundedScores(gc_sub, score_list);
   return complib::OutScoreJSON(gc_sub, id);
 }
 
@@ -107,6 +108,23 @@ PYBIND11_PLUGIN(_mander) {
     py::arg("gj_superunit"),
     py::arg("join_on")="",
     py::arg("join_id")="",
+    py::arg("score_list")=""
+  );
+
+  m.def(
+    "augmentShapefileWithUnboundedScores",
+    &augmentShapefileWithUnboundedScores,
+    "Given the filename of a shapefile containing subunits, and another of superunits, this function calculates the scores of its shapes and adds them to the file.",
+    py::arg("filename"),
+    py::arg("score_list")=""
+  );
+
+  m.def(
+    "addUnboundedScoresToNewShapefile",
+    &addUnboundedScoresToNewShapefile,
+    "Reads a shapefile, calculates its scores, and outputs a new shapefile.",
+    py::arg("in_filename")="",
+    py::arg("out_filename")="",
     py::arg("score_list")=""
   );
 
