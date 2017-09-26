@@ -81,7 +81,7 @@ def getBoundedScoresForGeoJSON(gj_sub, gj_sup, join_on, id="", score_list=[]):
   number of the multipolygon for which the scores were calculated.
   """
 
-  return _mander.getScoresForGeoJSON(geojson,id,score_list)
+  return _mander.getBoundedScoresForGeoJSON(gj_sub, gj_sup, id, join_on, score_list)
 
 
 
