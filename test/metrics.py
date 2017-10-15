@@ -4,23 +4,33 @@ import copy
 
 from unittest import TestCase
 
-#import geopandas
-from mander.districts import district
-from mander.metrics import calculatePolsby, calculateConvexHull, calculateReock, calculateSchwartzberg
+from mander.districts import District
+from mander.metrics import calculatePolsbyPopper, calculateConvexHull, calculateReock, calculateSchwartzberg
+from mander.metrics import scoresToGeojson
 
 base_dir = path.dirname(path.realpath(__file__))
 
-test_districts = ['CD_CA_9', 'CD_IL_4', 'CD_PA_7'] # TODO also test 'CD_CA_24', 'CD_MA_9'
+# Test individual metrics
 
-metrics = {
-    'polsbypopper': [],
-    'convexhull': [],
-    'reock': [],
-    'schwartzberg': []
+metricFunctions = {
+  'polsbypopper': calculatePolsbyPopper,
+  'convexhull': calculateConvexHull,
+  'reock': calculateReock,
+  'schwartzberg': calculateSchwartzberg
 }
 
+test_districts = ['CD_CA_9', 'CD_IL_4', 'CD_PA_7', 'CD_CA_24', 'CD_MA_9']
+
+metrics = {}
+for m in metricFunctions:
+    metrics[m] = []
+
 test_expected = copy.deepcopy(metrics)
-test_results = copy.deepcopy(metrics)
+test_returned = copy.deepcopy(metrics)
+
+def collectTestValues(method, district):
+  test_expected[method].append('%.4f' % district_scores[method])
+  test_returned[method].append('%.4f' % metricFunctions[method](district))
 
 for d in test_districts:
 
@@ -33,35 +43,40 @@ for d in test_districts:
       district_boundary = json.load(district_boundary_data)
       district_scores = json.load(district_scores_data)
 
-      test_district = district(district_boundaries_file) # TODO use python object instead of file path parameter
+      test_district = District(path=district_boundaries_file) # TODO use python object instead of file path parameter
 
-      # Polsby Popper
-      test_expected['polsbypopper'].append('%.4f' % district_scores['polsbypopper'])
-      test_results['polsbypopper'].append('%.4f' % calculatePolsby(test_district))
-
-      # Convex Hull
-      test_expected['convexhull'].append('%.4f' % district_scores['convexhull'])
-      test_results['convexhull'].append('%.4f' % calculateConvexHull(test_district))
-
-      # Reock
-      test_expected['reock'].append('%.4f' % district_scores['convexhull'])
-      test_results['reock'].append('%.4f' % calculateReock(test_district))
-
-      # Schwartzberg
-      test_expected['schwartzberg'].append('%.4f' % district_scores['schwartzberg'])
-      test_results['schwartzberg'].append('%.4f' % calculateSchwartzberg(test_district))
+      # Collect expected and returned values
+      for m in metricFunctions:
+          collectTestValues(m, test_district)
 
 
 class TestMetrics(TestCase):
 
     def test_polsbypopper(self):
-      self.assertEqual(test_expected['polsbypopper'], test_results['polsbypopper'])
+      self.assertEqual(test_expected['polsbypopper'], test_returned['polsbypopper'])
 
     def test_convexhull(self):
-      self.assertEqual(test_expected['convexhull'], test_results['convexhull'])
+      self.assertEqual(test_expected['convexhull'], test_returned['convexhull'])
 
     def test_reock(self):
-      self.assertEqual(test_expected['reock'], test_results['reock'])
+      self.assertEqual(test_expected['reock'], test_returned['reock'])
 
     def test_schwartzberg(self):
-      self.assertEqual(test_expected['schwartzberg'], test_results['schwartzberg'])
+      self.assertEqual(test_expected['schwartzberg'], test_returned['schwartzberg'])
+
+
+# Test scoresToGeojson
+
+scores_data = scoresToGeojson(District(path=path.join(base_dir, 'data', 'MN_Senate_2017.geojson')), 'polsbypopper')
+scores = json.loads(scores_data)
+
+contains_score = 0
+for feature in scores['features']:
+    if isinstance(feature['properties']['polsbypopper'], float):
+        contains_score = contains_score + 1
+
+class TestScoreGeojson(TestCase):
+
+    def test_alldistrictsscored(self):
+
+        self.assertEqual(contains_score, 67)
