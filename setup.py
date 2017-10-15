@@ -14,7 +14,7 @@ ext_modules = [
 ]
 
 setuptools.setup(name='mander',
-  version      = '0.3',
+  version      = '1.0.0',
   description  = 'Python package to calculate compactness metrics for district shapes.',
   url          = 'http://github.com/gerrymandr/python-mander',
   author       = 'Geometry of Redistricting Workshop',
