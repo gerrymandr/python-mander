@@ -38,6 +38,52 @@ a list of the scores available and how they are calculated is available
 [here](https://github.com/r-barnes/compactnesslib/blob/master/Scores.md).
 
 
+# Developer Setup
+
+## Requirements:
+
+* Python 2
+* pip
+* A compiler that supports with C++ 11.
+  * If using GCC, must use version 5 or greater
+
+## Reccommended
+*  virtualenv
+
+## Steps:
+
+* Fork this repo
+* Clone your fork
+    ```
+    git clone git@github.com:YOUR_USERNAME_HERE/python-mander.git
+    ```
+* Add the original repo as a remote
+    ```
+    git remote add upstream git@github.com:gerrymandr/python-mander.git
+    ```
+* Initialize and update the git submodules
+    ```
+    git submodule init
+    git submodule update
+    ```
+* Optionally create and activate a [Python virtual environment](https://virtualenv.pypa.io/en/stable/).
+    ```
+    virtualenv env
+    . env/bin/activate
+    ```
+* Install the dependencies
+    ```
+    pip install -r requirements.txt
+    ```
+* Build the project
+    ```
+    python setup.py build
+    ```
+  * If you need to specify a C compiler other than the default one on your system, you may add an inline environment variable `CC` and set it to the other compiler. For example, on a system with both gcc 4 and gcc 7 installed:
+    ```
+    CC=gcc-7 python setup.py build
+    ```
+
 
 Credits
 =======
