@@ -1,13 +1,11 @@
-Mander
-======
+# Mander
 
 A Python package and command line utility for calculating compactness metrics of
 electoral districts.
 
 
 
-Example
-=======
+# Example
 
 What scores are available?
 
@@ -29,8 +27,7 @@ Augmenting an existing shapefile with compactness scores:
 
 
 
-Compactness Metrics
-===================
+# Compactness Metrics
 
 Compactness scores are calculated using the underlying
 [compactnesslib](https://github.com/r-barnes/compactnesslib)
@@ -85,8 +82,7 @@ a list of the scores available and how they are calculated is available
     ```
 
 
-Credits
-=======
+# Credits
 
 This package was created for the
 [Metric Geometry And Gerrymandering Group](https://sites.tufts.edu/gerrymandr/)
