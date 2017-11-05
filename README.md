@@ -47,7 +47,7 @@ a list of the scores available and how they are calculated is available
 * A compiler that supports with C++ 11.
   * If using GCC, must use version 5 or greater
 
-## Reccommended
+## Recommended
 *  virtualenv
 
 ## Steps:
