@@ -1,10 +1,23 @@
 language: python
-python:
-  - "2.7"
+sudo: false
+cache: pip
+matrix:
+  include:
+    - python: "2.7"
+      os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-4.9
+      env:
+         - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y gcc-4.9-base
+  - eval "${MATRIX_EVAL}"
+
 install:
   - pip install -r requirements.txt
-  - CC=gcc-4.9 python setup.py build
+  - python setup.py build
+
 script: pytest test/metrics.py
