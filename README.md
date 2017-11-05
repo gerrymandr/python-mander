@@ -9,22 +9,27 @@ electoral districts.
 
 What scores are available?
 
-    import mander
-    mander.getListOfScores()
+```python
+import mander
+mander.getListOfScores()
+```
 
 Getting scores for GeoJSON:
 
-    import mander
+```python
+import mander
 
-    geojson_data = """{ "type": "FeatureCollection", "features": [{"type": "Feature","properties": {},"geometry": { "type": "Polygon", "coordinates": [ [ [ -30.585937499999996, 27.68352808378776 ], [ -2.8125, 27.68352808378776 ], [ -2.8125, 46.800059446787316 ], [ -30.585937499999996, 46.800059446787316 ], [ -30.585937499999996, 27.68352808378776 ] ] ] } } ] }"""
+geojson_data = """{ "type": "FeatureCollection", "features": [{"type": "Feature","properties": {},"geometry": { "type": "Polygon", "coordinates": [ [ [ -30.585937499999996, 27.68352808378776 ], [ -2.8125, 27.68352808378776 ], [ -2.8125, 46.800059446787316 ], [ -30.585937499999996, 46.800059446787316 ], [ -30.585937499999996, 27.68352808378776 ] ] ] } } ] }"""
 
-    mander.getScoresForGeoJSON(geojson_data)
+mander.getScoresForGeoJSON(geojson_data)
+```
 
 Augmenting an existing shapefile with compactness scores:
 
-    import mander
-    mander.augmentShapefileWithScores("us_electoral_districts.shp")
-
+```python
+import mander
+mander.augmentShapefileWithScores("us_electoral_districts.shp")
+```
 
 
 # Compactness Metrics
@@ -58,7 +63,7 @@ a list of the scores available and how they are calculated is available
     ```
     git remote add upstream git@github.com:gerrymandr/python-mander.git
     ```
-* Initialize and update the git submodules
+* This project depends upon a C++ library sourced from a git submodule. Initialize and update the git submodule.
     ```
     git submodule init
     git submodule update
