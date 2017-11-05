@@ -44,10 +44,10 @@ a list of the scores available and how they are calculated is available
 
 ## Requirements:
 
-* Python 2
+* Python 2.7
 * pip
 * A compiler that supports C++ 11.
-  * If using GCC, must use version 5 or greater
+  * If using GCC, must use [version 4.9 or greater](https://github.com/nlohmann/json#supported-compilers).
 
 ## Recommended
 *  virtualenv
