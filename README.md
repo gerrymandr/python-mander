@@ -46,7 +46,7 @@ a list of the scores available and how they are calculated is available
 
 * Python 2
 * pip
-* A compiler that supports with C++ 11.
+* A compiler that supports C++ 11.
   * If using GCC, must use version 5 or greater
 
 ## Recommended
@@ -69,9 +69,20 @@ a list of the scores available and how they are calculated is available
     git submodule update
     ```
 * Optionally create and activate a [Python virtual environment](https://virtualenv.pypa.io/en/stable/).
+    On Linux or Mac
     ```
     virtualenv env
-    . env/bin/activate
+    source env/bin/activate
+    ```
+    On Windows
+    ```
+    virtualenv env
+    env\Scripts\activate
+    ```
+
+    On any platform, you may exit the virtual environment by running
+    ```
+    deactivate
     ```
 * Install the dependencies
     ```
