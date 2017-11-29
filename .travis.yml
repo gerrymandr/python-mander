@@ -1,0 +1,20 @@
+language: python
+sudo: false
+cache: pip
+matrix:
+  include:
+    - python: "2.7"
+      os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env:
+         - CC=gcc-6 CXX=g++-6
+install:
+  - pip install -r requirements.txt
+  - python setup.py build install
+
+script: "true"
