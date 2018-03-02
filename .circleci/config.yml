@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # this docker image has compilers already cached and ready
+      - image: conda/c3i-linux-64
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # currently we have no external dependencies aside from two git submodules
+      # - restore_cache:
+      #     keys:
+      #     - v1-dependencies-{{ checksum "environment.yml" }}
+      #     - v1-dependencies-
+
+      - run:
+          name: build recipe
+          command: conda build conda.recipe
+
+      # currently we have no external dependencies aside from two git submodules
+      # - save_cache:
+      #     paths:
+      #       - /opt/conda
+      #     key: v1-dependencies-{{ checksum "environment.yml" }}
+
+      # tests are run as part of the build process
+      # - run:
+      #     name: run tests
+      #     command: |
+      #       source activate adj
+      #       pytest tests
+
+      # we could potentially be uploading our build artifacts here.  Maybe someday.
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
