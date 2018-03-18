@@ -1,8 +1,6 @@
 # Mander
 
-A Python package and command line utility for calculating compactness metrics of
-electoral districts.
-
+A Python package and command line utility for calculating compactness metrics of electoral districts.
 
 
 # Example
@@ -11,7 +9,8 @@ What scores are available?
 
 ```python
 import mander
-mander.getListOfScores()
+mander.getListOfBoundedScores()
+mander.getListOfUnboundedScores()
 ```
 
 Getting scores for GeoJSON:
@@ -21,23 +20,24 @@ import mander
 
 geojson_data = """{ "type": "FeatureCollection", "features": [{"type": "Feature","properties": {},"geometry": { "type": "Polygon", "coordinates": [ [ [ -30.585937499999996, 27.68352808378776 ], [ -2.8125, 27.68352808378776 ], [ -2.8125, 46.800059446787316 ], [ -30.585937499999996, 46.800059446787316 ], [ -30.585937499999996, 27.68352808378776 ] ] ] } } ] }"""
 
-mander.getScoresForGeoJSON(geojson_data)
+scores = mander.getUnboundedScoresForGeoJSON(geojson_data)
+print(scores)
 ```
 
 Augmenting an existing shapefile with compactness scores:
 
 ```python
 import mander
-mander.augmentShapefileWithScores("us_electoral_districts.shp")
+mander.augmentShapefileWithBoundedScores("us_electoral_districts.shp")
 ```
 
 
 # Compactness Metrics
 
 Compactness scores are calculated using the underlying
-[compactnesslib](https://github.com/r-barnes/compactnesslib)
+[compactnesslib](https://github.com/gerrymandr/compactnesslib)
 a list of the scores available and how they are calculated is available
-[here](https://github.com/r-barnes/compactnesslib/blob/master/Scores.md).
+[here](https://github.com/gerrymandr/compactnesslib/blob/master/Scores.md).
 
 
 # Developer Setup
