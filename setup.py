@@ -5,8 +5,13 @@ import glob
 ext_modules = [
   setuptools.Extension(
     "_mander",
-    glob.glob('src/*.cpp') + glob.glob('lib/compactnesslib/*.cpp') + glob.glob('lib/compactnesslib/shapelib/*.cpp') + glob.glob('lib/compactnesslib/lib/*.cpp'),
-    include_dirs = ['lib/compactnesslib', 'lib/pybind11/'],
+    (glob.glob('src/*.cpp') + glob.glob('lib/compactnesslib/*.cpp') + glob.glob('lib/compactnesslib/shapelib/*.cpp') + glob.glob('lib/compactnesslib/lib/*.cpp') +
+     glob.glob('lib/compactnesslib/lib/spatialindex_c/storagemanager/*.cpp') +
+     glob.glob('lib/compactnesslib/lib/spatialindex_c/rtree/*.cpp') +
+     glob.glob('lib/compactnesslib/lib/spatialindex_c/spatialindex/*.cpp') +
+     glob.glob('lib/compactnesslib/lib/spatialindex_c/tools/*.cpp')
+    ),
+    include_dirs = ['lib/compactnesslib', 'lib/pybind11/', 'lib/compactnesslib/lib'],
     language = 'c++',
     extra_compile_args = ['-std=c++11'],
     define_macros = [('DOCTEST_CONFIG_DISABLE',None)]
