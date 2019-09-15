@@ -1,4 +1,4 @@
-#include <compactnesslib.hpp>
+#include <compactnesslib/compactnesslib.hpp>
 #include <pybind11.h>
 #include <stl.h>
 #include <vector>
@@ -70,8 +70,8 @@ void addBoundedScoresToNewShapefile(
   complib::WriteShapefile(gc_sub,out_filename);
 }
 
-PYBIND11_PLUGIN(_mander) {
-  py::module m("_mander", "Internal library used by python-mander to calculate scores");
+PYBIND11_MODULE(_mander, m) {
+  m.doc() = "Internal library used by python-mander to calculate scores";
 
   m.def(
     "prepGeoJSON",
@@ -148,6 +148,4 @@ PYBIND11_PLUGIN(_mander) {
     py::arg("join_on")="",
     py::arg("score_list")=""
   );
-
-  return m.ptr();
 }
