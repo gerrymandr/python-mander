@@ -10,7 +10,7 @@ functools32==3.2.3-2
 geopandas==0.2.1
 matplotlib==2.0.2
 munch==2.2.0
-numpy==1.13.1
+numpy==1.21.0
 pandas==0.20.3
 pyparsing==2.2.0
 pyproj==1.9.5.1
