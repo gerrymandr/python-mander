@@ -7,7 +7,7 @@ cycler==0.10.0
 descartes==1.1.0
 enum34==1.1.6
 functools32==3.2.3-2
-geopandas==0.2.1
+geopandas==1.1.2
 matplotlib==2.0.2
 munch==2.2.0
 numpy==1.13.1
